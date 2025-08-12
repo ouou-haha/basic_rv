@@ -102,3 +102,20 @@ _stack_top → RAM 顶端（128M 的最高地址）
 
 栈向下增长，位于 .bss 段之上
 
+
+
+
+
+install:
+sudo apt update
+# 交叉编译器（裸机用）
+sudo apt install -y gcc-riscv64-unknown-elf
+# QEMU（系统模拟器，包含 riscv64）
+sudo apt install -y qemu-system-misc make
+
+cd rv-minimal
+# 如果你的交叉前缀不是 riscv64-unknown-elf-，可临时覆盖：
+# make CROSS=riscv64-elf-
+make
+make run
+
